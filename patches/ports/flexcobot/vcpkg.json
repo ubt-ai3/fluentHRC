@@ -1,0 +1,31 @@
+{
+  "$comment": "Dependency only port",
+  "name": "flexcobot",
+  "version": "1.0.6",
+  "port-version": 1,
+  "description": "flexcobot module",
+  "license": "BSL-1.0",
+  "dependencies": [
+    {
+      "name": "boost-serialization",
+      "version>=": "1.80.0#1"
+    },
+	{
+	  "name": "boost-signals2",
+	  "version>=": "1.80.0#1"
+	},
+	{
+	  "name": "eigen3"
+	},
+	{
+	  "name": "pcl",
+	  "features": ["simulation", "vtk"]
+	},
+	{
+	  "name": "opencv"
+	},
+	{
+	  "name": "freeglut"
+	}
+  ]
+}

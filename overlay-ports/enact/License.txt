@@ -1,0 +1,1 @@
+This is a dummy for vcpkg to suppress build warnings

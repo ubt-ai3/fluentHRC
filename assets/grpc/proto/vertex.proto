@@ -1,0 +1,130 @@
+syntax = "proto3";
+
+package generated;
+import "meta_data.proto";
+
+option optimize_for = LITE_RUNTIME;
+option cc_enable_arenas = true;
+
+message vertex_3d {
+	float x = 1;
+	float y = 2;
+	float z = 3;
+}
+
+message Rotation_3d {
+	float roll = 1;
+	float pitch = 2;
+	float yaw = 3;
+}
+
+message index_3d {
+	uint32 x = 1;
+	uint32 y = 2;
+	uint32 z = 3;
+}
+
+message quaternion {
+	float x = 1;
+	float y = 2;
+	float z = 3;
+	float w = 4;
+}
+
+message size_3d {
+	float x = 1;
+	float y = 2;
+	float z = 3;
+}
+
+message vertex_4d {
+	vertex_3d v3D = 1;
+	float w = 2;
+}
+
+message color {
+	uint32 r = 1;
+	uint32 g = 2;
+	uint32 b = 3;
+	uint32 a = 4;	
+}
+
+message Matrix {
+	uint32 rows = 1;
+	uint32 cols = 2;
+	repeated float data = 3 [packed=true];
+}
+
+message vertex_3d_array {
+	repeated vertex_3d vertices = 1;
+}
+
+message vertex_3d_no_scale {
+	float x = 1;
+	float y = 2;
+	float z = 3;
+}
+
+message vertex_3d_array_no_scale {
+	repeated vertex_3d vertices = 1;
+}
+
+message vertex_4d_array {
+	repeated vertex_4d vertices = 1;
+}
+
+message color_array {
+	repeated color colors = 1;
+}
+
+message Mesh_Data {
+	repeated vertex_3d_no_scale vertices = 1;
+	repeated uint32 indices = 2;
+	string name = 3;
+	optional vertex_3d_array_no_scale vertex_normals = 4;
+	optional color_array vertex_colors = 5;
+}
+
+message aabb {
+	size_3d diagonal = 1;
+	vertex_3d translation = 2;
+}
+
+message Obb {
+	aabb axis_aligned = 1;
+	quaternion rotation = 2;
+}
+
+message named_request {
+	string name = 1;
+}
+
+/**
+ * messages with meta attached
+ * meta is attached optional as optimization for streams
+ */
+message Matrix_TF_Meta
+{
+	Matrix matrix = 1;
+	optional Transformation_Meta transformation_meta = 2;
+}
+
+message Mesh_Data_TF_Meta
+{
+	Mesh_Data mesh_data = 1;
+	optional Transformation_Meta transformation_meta = 2;
+}
+
+message Vertex_3D_Meta {
+	vertex_3d vertex = 1;
+	optional Transformation_Meta transformation_meta = 2;
+}
+
+message Obb_Meta {
+	Obb obb = 1;
+	optional Transformation_Meta transformation_meta = 2;
+}
+
+service mesh_com {
+  rpc transmit_mesh_data (stream named_request) returns (stream Mesh_Data_TF_Meta) {}
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="20">
+<simon_net_params class_id="0" tracking_level="0" version="0">
+	<parameter_set class_id="1" tracking_level="0" version="0"></parameter_set>
+	<proto_file>assets/network_models/pose_deploy.prototxt</proto_file>
+	<weights_file>assets/network_models/pose_iter_102000.caffemodel</weights_file>
+	<n_points>21</n_points>
+</simon_net_params>
+</boost_serialization>
+

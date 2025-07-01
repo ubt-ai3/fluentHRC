@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option optimize_for = LITE_RUNTIME;
+option cc_enable_arenas = true;
+
+service PingPong {
+  rpc Play (stream Ping) returns (stream Pong) {}
+}
+
+message Ping {
+  string name = 1;
+}
+
+message Pong {
+  string message = 1;
+}

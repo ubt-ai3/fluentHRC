@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="20">
+<object_params class_id="0" tracking_level="0" version="0">
+	<parameter_set class_id="1" tracking_level="0" version="0"></parameter_set>
+	<min_object_height>8.000000380e-03</min_object_height>
+	<max_height>1.000000089e-01</max_height>
+	<construction_base_dimensions class_id="2" tracking_level="0" version="0">
+		<rows>3</rows>
+		<cols>1</cols>
+		<val>1.600000113e-01</val>
+		<val>3.999999911e-02</val>
+		<val>2.999999933e-02</val>
+	</construction_base_dimensions>
+</object_params>
+</boost_serialization>
+

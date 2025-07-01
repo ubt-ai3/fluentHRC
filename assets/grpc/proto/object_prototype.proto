@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package generated;
+
+option optimize_for = LITE_RUNTIME;
+option cc_enable_arenas = true;
+
+import "vertex.proto";
+import "meta_data.proto";
+
+message Object_Prototype {
+	aabb bounding_box = 1;
+	color mean_color = 2;
+	string mesh_name = 3;
+	string name = 4;
+	string type = 5;
+}
+
+message Object_Prototype_TF_Meta {
+    Object_Prototype object_prototype = 1;
+	optional Transformation_Meta transformation_meta = 2;
+}
+
+service object_prototype_com {
+  rpc transmit_object_prototype (stream named_request) returns (stream Object_Prototype_TF_Meta) {}
+}

@@ -1,0 +1,30 @@
+{
+  "name": "franka-proxy",
+  "version-string": "0.6",
+  "description": "Proxy server for franka.",
+  "dependencies": [
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    },
+	  "franka",
+	  "poco",
+	  "eigen3",
+	  "asio",
+    "nlohmann-json"
+  ],
+  "features": {
+    "server": {
+      "description": "Server application for franka-proxy",
+      "dependencies": ["argparse"]
+    },
+    "tests": {
+      "description": "Tests for franka-proxy",
+      "dependencies": ["argparse"]
+    }
+  }
+}

@@ -1,0 +1,74 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e9df941..b78d18d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -85,15 +85,17 @@ include_directories(${PROJECT_BINARY_DIR})
+ #
+ # list(REMOVE_ITEM ...) invocations remove PRIVATE and PUBLIC keywords from collected definitions and include pathes
+ if(NOT CPU_ONLY)
++  enable_language(CUDA)
++  set_property(TARGET Caffe PROPERTY CUDA_ARCHITECTURES native)
+   # pass include pathes to cuda_include_directories()
+-  set(Caffe_ALL_INCLUDE_DIRS ${Caffe_INCLUDE_DIRS})
+-  list(REMOVE_ITEM Caffe_ALL_INCLUDE_DIRS PRIVATE PUBLIC)
+-  cuda_include_directories(${Caffe_INCLUDE_DIR} ${Caffe_SRC_DIR} ${Caffe_ALL_INCLUDE_DIRS})
++  #set(Caffe_ALL_INCLUDE_DIRS ${Caffe_INCLUDE_DIRS})
++  #list(REMOVE_ITEM Caffe_ALL_INCLUDE_DIRS PRIVATE PUBLIC)
++  #cuda_include_directories(${Caffe_INCLUDE_DIR} ${Caffe_SRC_DIR} ${Caffe_ALL_INCLUDE_DIRS})
+ 
+   # add definitions to nvcc flags directly
+-  set(Caffe_ALL_DEFINITIONS ${Caffe_DEFINITIONS})
+-  list(REMOVE_ITEM Caffe_ALL_DEFINITIONS PRIVATE PUBLIC)
+-  list(APPEND CUDA_NVCC_FLAGS ${Caffe_ALL_DEFINITIONS})
++  #set(Caffe_ALL_DEFINITIONS ${Caffe_DEFINITIONS})
++  #list(REMOVE_ITEM Caffe_ALL_DEFINITIONS PRIVATE PUBLIC)
++  #list(APPEND CUDA_NVCC_FLAGS ${Caffe_ALL_DEFINITIONS})
+ endif()
+ 
+ # ---[ Subdirectories
+diff --git a/cmake/Dependencies.cmake b/cmake/Dependencies.cmake
+index 54a1890..52258b1 100644
+--- a/cmake/Dependencies.cmake
++++ b/cmake/Dependencies.cmake
+@@ -84,7 +84,6 @@ if(USE_LEVELDB)
+ endif()
+ 
+ # ---[ CUDA
+-#include(cmake/Cuda.cmake)
+ if (CPU_ONLY)
+   message(STATUS "-- CUDA is disabled. Building without it...")
+   list(APPEND Caffe_DEFINITIONS PUBLIC -DCPU_ONLY)
+diff --git a/src/caffe/CMakeLists.txt b/src/caffe/CMakeLists.txt
+index 7840f5d..d62ba21 100644
+--- a/src/caffe/CMakeLists.txt
++++ b/src/caffe/CMakeLists.txt
+@@ -31,20 +31,20 @@ target_compile_definitions(caffeproto ${Caffe_EXPORT_DEFINITIONS}
+ # creates 'test_srcs', 'srcs', 'test_cuda', 'cuda' lists
+ caffe_pickup_caffe_sources(${PROJECT_SOURCE_DIR})
+ 
+-if(CUDA_FOUND)
+-  include(../../cmake/Cuda.cmake)
+-  set(__cuda_options ${Caffe_COMPILE_DEFS}
+-                     ${Caffe_EXPORT_DEFINITION})
++#if(CUDA_FOUND)
++  #include(../../cmake/Cuda.cmake)
++  #set(__cuda_options ${Caffe_COMPILE_DEFS}
++                 #    ${Caffe_EXPORT_DEFINITION})
+   # add the required definitions
+-  add_definitions(${__cuda_options})
++  #add_definitions(${__cuda_options})
+   # it seems that using the OPTIONS argument like:
+   # caffe_cuda_compile(cuda_objs ${cuda} OPTIONS ${__cuda_options})
+   # does not work. Use add/remove_definitions instead.
+-  caffe_cuda_compile(cuda_objs ${cuda})
++  #caffe_cuda_compile(cuda_objs ${cuda})
+   # remove them
+-  remove_definitions(${__cuda_options})
+-  list(APPEND srcs ${cuda_objs} ${cuda})
+-endif()
++  #remove_definitions(${__cuda_options})
++  list(APPEND srcs ${cuda_objs} ${cuda})
++#endif()
+ if(MSVC)
+   list(APPEND Caffe_DEFINITIONS PUBLIC -DNO_STRICT)
+ endif()

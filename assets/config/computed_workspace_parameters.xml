@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="20">
+<computed_workspace_params class_id="0" tracking_level="0" version="0">
+	<parameter_set class_id="1" tracking_level="0" version="0"></parameter_set>
+	<crop_box_min class_id="2" tracking_level="0" version="0">
+		<rows>3</rows>
+		<cols>1</cols>
+		<val>1.000000089e-01</val>
+		<val>-5.500000119e-01</val>
+		<val>1.200000010e-02</val>
+	</crop_box_min>
+	<crop_box_max>
+		<rows>3</rows>
+		<cols>1</cols>
+		<val>6.999999881e-01</val>
+		<val>5.500000119e-01</val>
+		<val>8.000000119e-01</val>
+	</crop_box_max>
+	<construction_area_min>
+		<rows>3</rows>
+		<cols>1</cols>
+		<val>-2.406112403e-01</val>
+		<val>-4.416956007e-01</val>
+		<val>-9.999999776e-03</val>
+	</construction_area_min>
+	<construction_area_max>
+		<rows>3</rows>
+		<cols>1</cols>
+		<val>3.275535703e-01</val>
+		<val>2.542799711e-01</val>
+		<val>5.000000000e-01</val>
+	</construction_area_max>
+	<transformation class_id="3" tracking_level="0" version="0">
+		<rows>4</rows>
+		<cols>4</cols>
+		<val>-1.984612830e-02</val>
+		<val>9.997780323e-01</val>
+		<val>-6.992425770e-03</val>
+		<val>3.719875216e-01</val>
+		<val>9.997770190e-01</val>
+		<val>1.979530044e-02</val>
+		<val>-7.268180139e-03</val>
+		<val>-2.814009972e-02</val>
+		<val>-7.128149271e-03</val>
+		<val>-7.135076448e-03</val>
+		<val>-9.999491572e-01</val>
+		<val>1.868302572e+00</val>
+		<val>0.000000000e+00</val>
+		<val>0.000000000e+00</val>
+		<val>0.000000000e+00</val>
+		<val>1.000000000e+00</val>
+	</transformation>
+	<simulation_transformation>
+		<rows>4</rows>
+		<cols>4</cols>
+		<val>-9.976523519e-01</val>
+		<val>-6.825557351e-02</val>
+		<val>4.872902296e-03</val>
+		<val>-1.930939034e-03</val>
+		<val>-6.842521578e-02</val>
+		<val>9.951227903e-01</val>
+		<val>-7.184478641e-02</val>
+		<val>1.938935835e-03</val>
+		<val>5.467197843e-05</val>
+		<val>-7.201011479e-02</val>
+		<val>-9.974647760e-01</val>
+		<val>2.000418186e+00</val>
+		<val>0.000000000e+00</val>
+		<val>0.000000000e+00</val>
+		<val>0.000000000e+00</val>
+		<val>1.000000000e+00</val>
+	</simulation_transformation>
+	<max_object_dimension>7.000000030e-02</max_object_dimension>
+</computed_workspace_params>
+</boost_serialization>
+

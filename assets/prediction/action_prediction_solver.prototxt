@@ -1,0 +1,16 @@
+net: "action_prediction_model.prototxt"
+type:  "AdaGrad"
+base_lr: 0.01     # begin training at a learning rate of 0.02
+lr_policy: "step" # learning rate policy: drop the learning rate in "steps"
+                  # by a factor of gamma every stepsize iterations
+gamma: 0.99        # drop the learning rate by a factor of 2
+                  # (i.e., multiply it by a factor of gamma = 0.5)
+stepsize: 1000    # drop the learning rate every 1K iterations
+max_iter: 500    # return from Step method after this number of iterations
+# momentum: 0.5
+# snapshot: 1000000
+snapshot_prefix: "action_prediction"
+snapshot_after_train: false
+solver_mode: GPU
+debug_info:   false
+# display: 1     # how often do we print training loss

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package generated;
+
+option optimize_for = LITE_RUNTIME;
+option cc_enable_arenas = true;
+
+enum Axis
+{
+    X = 0;
+    Y = 1;
+    Z = 2;
+}
+
+enum Axis_Direction
+{
+    INVALID = 0;
+    POSITIVE = 1;
+    NEGATIVE = -1;
+}
+
+message Axis_Alignment
+{
+    Axis axis = 1;
+    Axis_Direction direction = 2;
+}
+
+message Ratio
+{
+    int64 Num = 1;
+    int64 Denom = 2;
+}
+
+message Transformation_Meta
+{
+    Axis_Alignment right = 1;
+    Axis_Alignment forward = 2;
+    Axis_Alignment up = 3;
+    Ratio scale = 4;
+}

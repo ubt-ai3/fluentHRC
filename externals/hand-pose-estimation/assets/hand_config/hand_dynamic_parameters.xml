@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="20">
+<hand_dynamic_params class_id="0" tracking_level="0" version="0">
+	<parameter_set class_id="1" tracking_level="0" version="0"></parameter_set>
+	<speed_extension_mcp>3.141592741e+00</speed_extension_mcp>
+	<speed_extension_pip>3.141592741e+00</speed_extension_pip>
+	<speed_extension_dip>3.141592741e+00</speed_extension_dip>
+	<speed_wrist>2.000000000e+00</speed_wrist>
+	<speed_rotation>3.141592741e+00</speed_rotation>
+	<speed_adduction_thumb>3.141592741e+00</speed_adduction_thumb>
+	<speed_adduction>1.570796371e+00</speed_adduction>
+</hand_dynamic_params>
+</boost_serialization>
+

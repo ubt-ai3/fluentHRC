@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option optimize_for = LITE_RUNTIME;
+option cc_enable_arenas = true;
+
+message debug_client {
+  string message = 1;
+}
+
+message debug_server {
+  string message = 1;
+}
+
+service debug_com {
+  rpc transmit_debug_info (debug_client) returns (debug_server) {}
+}

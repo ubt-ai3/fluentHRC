@@ -1,0 +1,6 @@
+[submodule "externals/opencv-serialization"]
+	path = externals/opencv-serialization
+	url = https://resy-gitlab.inf.uni-bayreuth.de/serialization/opencv-serialization.git
+[submodule "tools/vc19/vs-props"]
+	path = tools/vc19/vs-props
+	url = https://resy-gitlab.inf.uni-bayreuth.de/flexcobot/vs-props.git

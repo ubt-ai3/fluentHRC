@@ -1,0 +1,625 @@
+name: "action prediction"
+
+#history input
+# We use the MemoryData layer instead of the Input layer because we can reshape MemoryData (i.e. change the count of batch_size at runtime)
+layer {
+  name: "data_history"
+  type: "MemoryData"
+  top: "data_history"
+  top: "fakelabel1"
+  memory_data_param 
+  {
+    batch_size: 4 
+    channels: 1
+    height: 1
+    width: 33 
+  }
+}
+
+layer {
+  name: "indices_history"
+  type: "MemoryData"
+  top: "indices_history"
+  top: "fakelabel2"
+  memory_data_param 
+  {
+    batch_size: 4 
+    channels: 1
+    height: 1
+    width: 1 
+  }
+}
+
+layer {
+  name: "indices_history_1d"
+  type: "Reshape"
+  bottom: "indices_history"
+  top: "indices_history_1d"
+  reshape_param {
+    shape: {
+      dim: -1
+    }
+  }
+}
+
+# history: reindex -> reshape
+layer {
+  name: "reindex_history"
+  type: "BatchReindex"
+  bottom: "data_history"
+  bottom: "indices_history_1d"
+  top: "reindex_history"
+}
+
+layer {
+  name: "reshape_history"
+  type: "Reshape"
+  bottom: "reindex_history"
+  top: "history"
+  reshape_param {
+    shape: {
+      dim: -1
+      dim: 4
+      dim: 1
+      dim: 33
+    }
+  }
+}
+
+layer {
+  name: "history_weights"
+  type: "Parameter"
+  top: "history_weights"
+  parameter_param {
+    shape: {
+      dim: 4
+    }
+  }
+}
+
+#candidates input
+
+layer {
+  name: "data_candidates"
+  type: "MemoryData"
+  top: "data_candidates"
+  top: "fakelabel3"
+  memory_data_param 
+  {
+    batch_size: 1 
+    channels: 1
+    height: 1
+    width: 33 
+  }
+}
+
+layer {
+  name: "indices_candidates"
+  type: "MemoryData"
+  top: "indices_candidates"
+  top: "fakelabel4"
+  memory_data_param 
+  {
+    batch_size: 4 
+    channels: 1
+    height: 1
+    width: 1 
+  }
+}
+
+layer {
+  name: "indices_candidates_1d"
+  type: "Reshape"
+  bottom: "indices_candidates"
+  top: "indices_candidates_1d"
+  reshape_param {
+    shape: {
+      dim: -1
+    }
+  }
+}
+
+# candidates: reindex -> reshape
+
+layer {
+  name: "reindex_candidates"
+  type: "BatchReindex"
+  bottom: "data_candidates"
+  bottom: "indices_candidates_1d"
+  top: "reindex_candidates"
+}
+
+layer {
+  name: "reshape_candidates"
+  type: "Reshape"
+  bottom: "reindex_candidates"
+  top: "candidates"
+  reshape_param {
+    shape: {
+      dim: -1
+      dim: 4
+      dim: 1
+      dim: 33
+    }
+  }
+}
+
+#subtract history from candidates (each of the 4 vectors separately)
+
+layer {
+  name: "diff"
+  type: "Eltwise"
+  bottom: "history"
+  bottom: "candidates"
+  top: "diff"
+  eltwise_param {
+    operation: SUM
+    coeff: -1
+    coeff: 1
+  }
+}
+
+#weight diff
+
+layer {
+  name: "scale_diff"
+  type: "Scale"
+  bottom: "diff"
+  bottom: "history_weights"
+  top: "scale_diff"
+  scale_param {
+    axis: 1
+    num_axes: 1
+  }
+}
+
+layer {
+  name: "slice_diff"
+  type: "Slice"
+  bottom: "scale_diff"
+  top: "diff_0"
+  top: "diff_1"
+  top: "diff_2"
+  top: "diff_3"
+  slice_param {
+    axis: 1
+    slice_point: 1
+    slice_point: 2
+    slice_point: 3
+  }
+}
+
+layer {
+  name: "fuse_diff"
+  type: "Eltwise"
+  bottom: "diff_0"
+  bottom: "diff_1"
+  bottom: "diff_2"
+  bottom: "diff_3"
+  top: "weighted_diff"
+  eltwise_param {
+    operation: SUM
+  }
+}
+
+layer {
+  name: "diff_reshape"
+  type: "Reshape"
+  bottom: "weighted_diff"
+  top: "diff_reshape"
+  reshape_param {
+    shape: {
+      dim: 0
+      dim: 33
+    }
+  }
+}
+
+layer {
+  name: "slice_features"
+  type: "Slice"
+  bottom: "diff_reshape"
+  top: "diff_neighbors"
+  top: "diff_others"
+  slice_param {
+    axis: 1
+    slice_point: 27
+  }
+}
+
+layer {
+  name: "combine_neighbors"
+  type: "InnerProduct"
+  bottom: "diff_neighbors"
+  top: "diff_neighbors_4"
+  inner_product_param {
+    num_output: 4
+    bias_term: false
+    weight_filler {
+      type: "xavier",
+    }
+  }
+}
+
+
+layer {
+  name: "concat_features"
+  type: "Concat"
+  bottom: "diff_neighbors_4"
+  bottom: "diff_others"
+  top: "diff_small"
+  concat_param {
+    axis: 1
+  }
+}
+
+layer {
+  name: "fc1"
+  type: "InnerProduct"
+  bottom: "diff_small"
+  top: "fc1"
+  inner_product_param {
+    num_output: 16
+    weight_filler {
+      type: "xavier",
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+
+layer {
+  name: "criteria"
+  bottom: "fc1"
+  top: "criteria"
+  type: "Sigmoid"
+}
+
+layer {
+  name: "slice_criteria"
+  type: "Slice"
+  bottom: "criteria"
+  top: "criteria_0"
+  top: "criteria_1"
+  slice_param {
+    axis: 1
+    slice_point: 8
+  }
+}
+
+
+
+# for action_type == -1
+
+layer {
+  name: "combine_criteria_0"
+  type: "InnerProduct"
+  bottom: "criteria_0"
+  top: "condition_0"
+  inner_product_param {
+    num_output: 1
+    weight_filler {
+      type: "xavier",
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+
+layer {
+  name: "output_0"
+  bottom: "condition_0"
+  top: "output_0"
+  type: "TanH"
+}
+
+# for action_type == 1
+
+layer {
+  name: "combine_criteria_1"
+  type: "InnerProduct"
+  bottom: "criteria_1"
+  top: "condition_1"
+  inner_product_param {
+    num_output: 1
+    weight_filler {
+      type: "xavier",
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+
+layer {
+  name: "output_1"
+  bottom: "condition_1"
+  top: "output_1"
+  type: "TanH"
+}
+
+layer {
+  name: "single_candidate"
+  bottom: "candidates"
+  top: "single_candidate"
+  top: "fakelabel7"
+  type: "Slice"
+  slice_param {
+    axis: 1
+    slice_point: 1
+  }
+}
+
+layer {
+  name: "action_type"
+  type: "Slice"
+  bottom: "single_candidate"
+  top: "fakelabel6"
+  top: "action_type"
+  slice_param {
+    axis: 3
+    slice_point: 32
+  }
+}
+
+layer {
+  name: "action_type_reshape"
+  type: "Reshape"
+  bottom: "action_type"
+  top: "action_type_reshape"
+  reshape_param {
+    shape: {
+      dim: 0
+      dim: 1
+    }
+  }
+}
+
+layer {
+  name: "action_type_0"
+  type: "Power"
+  bottom: "action_type_reshape"
+  top: "action_type_0"
+  power_param {
+    scale: -0.5
+    shift: 0.5
+    power: 1
+  }
+}
+
+layer {
+  name: "action_type_1"
+  type: "Power"
+  bottom: "action_type_reshape"
+  top: "action_type_1"
+  power_param {
+    scale: 0.5
+    shift: 0.5
+    power: 1
+  }
+}
+
+layer {
+  name: "weighted_output_0"
+  type: "Eltwise"
+  bottom: "output_0"
+  bottom: "action_type_0"
+  top: "weighted_output_0"
+  eltwise_param {
+    operation: PROD
+  }
+}
+
+layer {
+  name: "weighted_output_1"
+  type: "Eltwise"
+  bottom: "output_1"
+  bottom: "action_type_1"
+  top: "weighted_output_1"
+  eltwise_param {
+    operation: PROD
+  }
+}
+
+layer {
+  name: "output"
+  type: "Eltwise"
+  bottom: "weighted_output_0"
+  bottom: "weighted_output_1"
+  top: "output"
+  eltwise_param {
+    operation: SUM
+  }
+}
+
+layer {
+  name: "labels"
+  type: "MemoryData"
+  top: "labels"
+  top: "fakelabel5"
+  memory_data_param 
+  {
+    batch_size: 1 
+    channels: 1
+    height: 1
+    width: 1 
+  }
+  include {
+    phase: TRAIN
+  }
+}
+
+
+## loss layers
+# prediction output
+
+
+layer {
+  name: "labels_2d"
+  type: "Reshape"
+  bottom: "labels"
+  top: "labels_2d"
+  reshape_param {
+    shape: {
+      dim: 0
+      dim: 1
+    }
+  }
+  include {
+    phase: TRAIN
+  }
+}
+
+layer {
+  name: "labels_0"
+  type: "Eltwise"
+  bottom: "labels_2d"
+  bottom: "action_type_0"
+  top: "labels_0"
+  eltwise_param {
+    operation: PROD
+  }
+  include {
+    phase: TRAIN
+  }
+}
+
+layer {
+  name: "labels_1"
+  type: "Eltwise"
+  bottom: "labels_2d"
+  bottom: "action_type_1"
+  top: "labels_1"
+  eltwise_param {
+    operation: PROD
+  }
+  include {
+    phase: TRAIN
+  }
+}
+
+layer {
+  name: "output_loss_0"
+  type: "EuclideanLoss"
+  bottom: "output"
+  bottom: "labels_0"
+  top: "loss_0"
+  loss_weight: 10
+  include {
+    phase: TRAIN
+  }
+}
+
+layer {
+  name: "output_loss_1"
+  type: "EuclideanLoss"
+  bottom: "output"
+  bottom: "labels_1"
+  top: "loss_1"
+  loss_weight: 10
+  include {
+    phase: TRAIN
+  }
+}
+
+
+layer {
+  name: "consume fakelables"
+  type: "Silence"
+  bottom: "fakelabel1"
+  bottom: "fakelabel2"
+  bottom: "fakelabel3"
+  bottom: "fakelabel4"
+  bottom: "fakelabel6"
+}
+
+# history weights sum to one
+
+layer {
+  name: "one"
+  type: "DummyData"
+  top: "one"
+  dummy_data_param: {
+    shape: {
+      dim: 1
+    }
+    data_filler: {
+      type: "constant"
+      value: 1
+    }
+  }
+}
+
+layer {
+  name: "abs_history_weights"
+  type: "AbsVal"
+  bottom: "history_weights"
+  top: "abs_history_weights"
+}
+
+layer {
+  name: "sum_history_weights"
+  type: "Reduction"
+  bottom: "abs_history_weights"
+  top: "sum_history_weights"
+  reduction_param {
+    operation: SUM
+    axis: 0
+  }
+}
+
+layer {
+  name: "sum_history_weights_reshape"
+  type: "Reshape"
+  bottom: "sum_history_weights"
+  top: "sum_history_weights_reshape"
+  reshape_param {
+    shape: {
+      dim: -1
+    }
+  }
+}
+
+layer {
+  name: "history_weights_sum_to_one"
+  type: "EuclideanLoss"
+  bottom: "sum_history_weights_reshape"
+  bottom: "one"
+  top: "history_weights_sum_to_one"
+}
+
+
+#history weights positive
+
+layer {
+  name: "neg_history_weigths"
+  type: "Scale"
+  bottom: "history_weights"
+  top: "neg_history_weigths"
+  scale_param {
+    axis: 0
+    num_axes: 0
+    filler: {
+      type: "constant"
+      value: -1
+    }
+  }
+  include {
+    phase: TRAIN
+  }
+}
+
+layer {
+  name: "history_weights_positive"
+  bottom: "neg_history_weigths"
+  top: "history_weights_positive"
+  type: "ReLU"
+  loss_weight: 1
+  include {
+    phase: TRAIN
+  }
+}
+
+

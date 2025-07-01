@@ -1,0 +1,2 @@
+#define HANDPOSEESTIMATION_API __declspec(dllexport)
+#define HANDPOSEESTIMATION_API __declspec(dllimport)

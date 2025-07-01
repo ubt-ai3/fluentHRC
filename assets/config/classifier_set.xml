@@ -1,0 +1,1303 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="18">
+<classifiers class_id="6" tracking_level="0" version="0">
+	<parameter_set class_id="7" tracking_level="0" version="0"></parameter_set>
+	<classifiers class_id="8" tracking_level="0" version="0">
+		<count>30</count>
+		<item_version>1</item_version>
+		<item class_id="9" tracking_level="0" version="1">
+			<px class_id="0" tracking_level="1" version="0" object_id="_0">
+				<classifier class_id="10" tracking_level="0" version="0">
+					<prototype class_id="11" tracking_level="0" version="1">
+						<px class_id="12" tracking_level="1" version="0" object_id="_1">
+							<bounding_box class_id="13" tracking_level="0" version="0">
+								<translation class_id="14" tracking_level="0" version="0">
+									<rows>3</rows>
+									<cols>1</cols>
+									<val>0.000000000e+00</val>
+									<val>0.000000000e+00</val>
+									<val>0.000000000e+00</val>
+								</translation>
+								<diagonal>
+									<rows>3</rows>
+									<cols>1</cols>
+									<val>0.000000000e+00</val>
+									<val>0.000000000e+00</val>
+									<val>0.000000000e+00</val>
+								</diagonal>
+							</bounding_box>
+							<mean_color.r>51</mean_color.r>
+							<mean_color.g>82</mean_color.g>
+							<mean_color.b>61</mean_color.b>
+							<mean_color.a>255</mean_color.a>
+							<base_mesh class_id="15" tracking_level="0" version="1">
+								<px class_id="-1"></px>
+							</base_mesh>
+							<name>dark green background</name>
+						</px>
+					</prototype>
+				</classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id="2" tracking_level="1" version="0" object_id="_2">
+				<bounding_box_classifier class_id="17" tracking_level="0" version="0">
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_3">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>200</mean_color.r>
+								<mean_color.g>190</mean_color.g>
+								<mean_color.b>180</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id="16" tracking_level="1" version="0" object_id="_4">
+										<path>assets/object_meshes/cylinder.obj</path>
+									</px>
+								</base_mesh>
+								<name>wooden small cylinder</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier class_id="18" tracking_level="0" version="0">
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_3"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id="3" tracking_level="1" version="0" object_id="_5">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_6">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>3.500000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>1.600000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>200</mean_color.r>
+								<mean_color.g>190</mean_color.g>
+								<mean_color.b>180</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id="_7">
+										<path>assets/object_meshes/semicylinder.obj</path>
+									</px>
+								</base_mesh>
+								<name>wooden semicylinder</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_6"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="2" object_id="_8">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_9">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>5.600000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>200</mean_color.r>
+								<mean_color.g>190</mean_color.g>
+								<mean_color.b>180</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_4"></px>
+								</base_mesh>
+								<name>wooden cylinder</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_9"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id="1" tracking_level="1" version="0" object_id="_10">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_11">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>200</mean_color.r>
+								<mean_color.g>190</mean_color.g>
+								<mean_color.b>180</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id="_12">
+										<path>assets/object_meshes/cube.obj</path>
+									</px>
+								</base_mesh>
+								<name>wooden cube</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_11"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_13">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_14">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>5.600000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>200</mean_color.r>
+								<mean_color.g>190</mean_color.g>
+								<mean_color.b>180</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>wooden block</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_14"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id="5" tracking_level="1" version="0" object_id="_15">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_16">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>5.600000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>200</mean_color.r>
+								<mean_color.g>190</mean_color.g>
+								<mean_color.b>180</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id="_17">
+										<path>assets/object_meshes/triangular_prism.obj</path>
+									</px>
+								</base_mesh>
+								<name>wooden triangular prism</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_16"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id="4" tracking_level="1" version="0" object_id="_18">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_19">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>5.600000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>200</mean_color.r>
+								<mean_color.g>190</mean_color.g>
+								<mean_color.b>180</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id="_20">
+										<path>assets/object_meshes/bridge.obj</path>
+									</px>
+								</base_mesh>
+								<name>wooden bridge</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_19"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="4" object_id="_21">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_22">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>5.600000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>175</mean_color.r>
+								<mean_color.g>105</mean_color.g>
+								<mean_color.b>180</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_20"></px>
+								</base_mesh>
+								<name>purple bridge</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_22"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="4" object_id="_23">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_24">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>5.600000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>235</mean_color.r>
+								<mean_color.g>45</mean_color.g>
+								<mean_color.b>135</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_20"></px>
+								</base_mesh>
+								<name>magenta bridge</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_24"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_25">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_26">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>5.600000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>1.400000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>200</mean_color.r>
+								<mean_color.g>190</mean_color.g>
+								<mean_color.b>180</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>wooden flat block</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_26"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_27">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_28">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>8.400000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>1.400000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>200</mean_color.r>
+								<mean_color.g>190</mean_color.g>
+								<mean_color.b>180</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>wooden plank</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_28"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_29">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_30">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>8.400000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>1.400000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>5</mean_color.r>
+								<mean_color.g>115</mean_color.g>
+								<mean_color.b>185</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>cyan plank</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_30"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_31">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_32">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>8.400000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>1.400000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>230</mean_color.r>
+								<mean_color.g>80</mean_color.g>
+								<mean_color.b>55</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>red plank</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_32"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_33">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_34">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>8.400000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>1.400000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>250</mean_color.r>
+								<mean_color.g>255</mean_color.g>
+								<mean_color.b>61</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>yellow plank</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_34"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_35">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_36">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>5.600000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>230</mean_color.r>
+								<mean_color.g>80</mean_color.g>
+								<mean_color.b>55</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>red block</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_36"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_37">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_38">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>5.600000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>5</mean_color.r>
+								<mean_color.g>20</mean_color.g>
+								<mean_color.b>110</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>blue block</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_38"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_39">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_40">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>5.600000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>250</mean_color.r>
+								<mean_color.g>255</mean_color.g>
+								<mean_color.b>61</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>yellow block</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_40"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="2" object_id="_41">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_42">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>230</mean_color.r>
+								<mean_color.g>80</mean_color.g>
+								<mean_color.b>55</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_4"></px>
+								</base_mesh>
+								<name>red small cylinder</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_42"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="2" object_id="_43">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_44">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>5.600000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>235</mean_color.r>
+								<mean_color.g>45</mean_color.g>
+								<mean_color.b>135</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_4"></px>
+								</base_mesh>
+								<name>magenta cylinder</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_44"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_45">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_46">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>5.600000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>1.400000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>230</mean_color.r>
+								<mean_color.g>80</mean_color.g>
+								<mean_color.b>55</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>red flat block</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_46"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_47">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_48">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>5.600000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>1.400000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>250</mean_color.r>
+								<mean_color.g>255</mean_color.g>
+								<mean_color.b>61</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>yellow flat block</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_48"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_49">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_50">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>5.600000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>1.400000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>175</mean_color.r>
+								<mean_color.g>105</mean_color.g>
+								<mean_color.b>180</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>purple flat block</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_50"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="3" object_id="_51">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_52">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>3.500000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>1.600000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>175</mean_color.r>
+								<mean_color.g>105</mean_color.g>
+								<mean_color.b>180</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_7"></px>
+								</base_mesh>
+								<name>purple semicylinder</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_52"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="3" object_id="_53">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_54">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>3.500000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>1.600000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>235</mean_color.r>
+								<mean_color.g>45</mean_color.g>
+								<mean_color.b>135</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_7"></px>
+								</base_mesh>
+								<name>magenta semicylinder</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_54"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="5" object_id="_55">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_56">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>5.600000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>5</mean_color.r>
+								<mean_color.g>115</mean_color.g>
+								<mean_color.b>185</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_17"></px>
+								</base_mesh>
+								<name>cyan triangular prism</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_56"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_57">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_58">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>230</mean_color.r>
+								<mean_color.g>80</mean_color.g>
+								<mean_color.b>55</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>red cube</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_58"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_59">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_60">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>175</mean_color.r>
+								<mean_color.g>105</mean_color.g>
+								<mean_color.b>180</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>purple cube</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_60"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_61">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_62">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>5</mean_color.r>
+								<mean_color.g>115</mean_color.g>
+								<mean_color.b>185</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>cyan cube</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_62"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+		<item>
+			<px class_id_reference="1" object_id="_63">
+				<bounding_box_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id="_64">
+								<bounding_box>
+									<translation>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+										<val>0.000000000e+00</val>
+									</translation>
+									<diagonal>
+										<rows>3</rows>
+										<cols>1</cols>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+										<val>2.800000000e-02</val>
+									</diagonal>
+								</bounding_box>
+								<mean_color.r>250</mean_color.r>
+								<mean_color.g>255</mean_color.g>
+								<mean_color.b>61</mean_color.b>
+								<mean_color.a>255</mean_color.a>
+								<base_mesh>
+									<px class_id_reference="16" object_id_reference="_12"></px>
+								</base_mesh>
+								<name>yellow cube</name>
+							</px>
+						</prototype>
+					</classifier>
+				</bounding_box_classifier>
+				<monochrome_object_classifier>
+					<classifier>
+						<prototype>
+							<px class_id_reference="12" object_id_reference="_64"></px>
+						</prototype>
+					</classifier>
+				</monochrome_object_classifier>
+			</px>
+		</item>
+	</classifiers>
+</classifiers>
+</boost_serialization>
+

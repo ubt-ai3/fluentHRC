@@ -1,0 +1,110 @@
+name: "action prediction"
+layer {
+  name: "inputdata"
+  type: "MemoryData"
+  top: "dataprediction"
+  top: "fakelabel"
+  include {
+    phase: TRAIN
+  }
+  memory_data_param 
+  {
+    batch_size: 1 
+    channels: 5 
+    height: 1
+    width: 34 
+  }
+}
+
+layer {
+  name: "split"
+  type: "Slice"
+  bottom: "dataprediction"
+  top: "fulldata"
+  top: "prediction"
+  include {
+    phase: TRAIN
+  }
+  slice_param {
+    axis: 1
+    slice_point: 4
+  }
+}
+
+layer {
+  name: "test_inputdata"
+  type: "Input"
+  top: "fulldata"
+  top: "fakelabel"
+  include {
+    phase: TEST
+  }
+  input_param {
+    shape {
+      dim: 1
+      dim: 4
+      dim: 1
+      dim: 34
+    }
+  }
+}
+
+layer {
+  name: "fc1"
+  type: "InnerProduct"
+  bottom: "fulldata"
+  top: "fc1"
+  inner_product_param {
+    num_output: 34
+    weight_filler {
+      type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+
+layer {
+  name: "fc1relu"
+  bottom: "fc1"
+  top: "fc1"
+  type: "ReLU"
+}
+
+layer {
+  name: "fc2"
+  type: "InnerProduct"
+  bottom: "fc1"
+  top: "fc2"
+  inner_product_param {
+    num_output: 34
+    weight_filler {
+      type: "xavier"
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}
+
+layer {
+  name: "output"
+  bottom: "fc2"
+  top: "output"
+  type: "Sigmoid"
+  include {
+    phase: TEST
+  }
+}
+
+layer {
+  name: "loss"
+  type: "SigmoidCrossEntropyLoss"
+  bottom: "output"
+  bottom: "prediction"
+  top: "loss"
+  include {
+    phase: TRAIN
+  }
+}

@@ -1,0 +1,235 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c3b03ef..187827e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.4)
++cmake_minimum_required(VERSION 3.20)
+ 
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ 
+@@ -21,8 +21,8 @@ else()
+   add_compile_options(-Wall -Wextra)
+ endif()
+ 
+-set(THIRDPARTY_SOURCES_DIR "${CMAKE_CURRENT_SOURCE_DIR}/3rdparty" CACHE PATH
+-  "Directory for third-party sources")
++#set(THIRDPARTY_SOURCES_DIR "${CMAKE_CURRENT_SOURCE_DIR}/3rdparty" CACHE PATH
++  #"Directory for third-party sources")
+ 
+ ## Dependencies
+ find_package(Poco REQUIRED COMPONENTS Net Foundation)
+@@ -110,7 +110,7 @@ target_include_directories(franka PUBLIC
+ target_link_libraries(franka PRIVATE
+   Poco::Foundation
+   Poco::Net
+-  Eigen3::Eigen3
++  Eigen3::Eigen
+   Threads::Threads
+   libfranka-common
+ )
+diff --git a/cmake/FindEigen3.cmake b/cmake/FindEigen3.cmake
+deleted file mode 100644
+index dc2fb7c..0000000
+--- a/cmake/FindEigen3.cmake
++++ /dev/null
+@@ -1,16 +0,0 @@
+-find_package(Eigen3 CONFIG)
+-mark_as_advanced(FORCE Eigen3_DIR)
+-
+-include(FindPackageHandleStandardArgs)
+-find_package_handle_standard_args(Eigen3
+-  FOUND_VAR Eigen3_FOUND
+-  REQUIRED_VARS EIGEN3_INCLUDE_DIRS
+-)
+-
+-if(NOT TARGET Eigen3::Eigen3)
+-  add_library(Eigen3::Eigen3 INTERFACE IMPORTED)
+-  set_target_properties(Eigen3::Eigen3 PROPERTIES
+-    INTERFACE_INCLUDE_DIRECTORIES ${EIGEN3_INCLUDE_DIRS}
+-    INTERFACE_COMPILE_DEFINITIONS "${EIGEN3_DEFINITIONS}"
+-  )
+-endif()
+diff --git a/cmake/FindPoco.cmake b/cmake/FindPoco.cmake
+deleted file mode 100644
+index 36ef224..0000000
+--- a/cmake/FindPoco.cmake
++++ /dev/null
+@@ -1,32 +0,0 @@
+-find_package(Poco COMPONENTS ${Poco_FIND_COMPONENTS} CONFIG QUIET)
+-if(Poco_FOUND)
+-  return()
+-endif()
+-
+-find_path(Poco_INCLUDE_DIR Poco/Poco.h)
+-mark_as_advanced(FORCE Poco_INCLUDE_DIR)
+-
+-foreach(component ${Poco_FIND_COMPONENTS})
+-  set(component_var "Poco_${component}_LIBRARY")
+-  find_library(${component_var} Poco${component})
+-  mark_as_advanced(FORCE ${component_var})
+-  if(${component_var})
+-    set(Poco_${component}_FOUND TRUE)
+-    list(APPEND Poco_LIBRARIES ${component})
+-    if(NOT TARGET Poco::${component})
+-      add_library(Poco::${component} SHARED IMPORTED)
+-      set_target_properties(Poco::${component} PROPERTIES
+-        INTERFACE_INCLUDE_DIRECTORIES ${Poco_INCLUDE_DIR}
+-        IMPORTED_LOCATION ${${component_var}}
+-      )
+-    endif()
+-  endif()
+-endforeach()
+-
+-include(FindPackageHandleStandardArgs)
+-find_package_handle_standard_args(Poco
+-  FOUND_VAR Poco_FOUND
+-  REQUIRED_VARS Poco_INCLUDE_DIR Poco_LIBRARIES
+-  VERSION_VAR Poco_VERSION
+-  HANDLE_COMPONENTS
+-)
+diff --git a/cmake/GoogleTest-CMakeLists.txt.in b/cmake/GoogleTest-CMakeLists.txt.in
+deleted file mode 100644
+index f5e5dd0..0000000
+--- a/cmake/GoogleTest-CMakeLists.txt.in
++++ /dev/null
+@@ -1,16 +0,0 @@
+-cmake_minimum_required(VERSION 3.0)
+-project(googletest-download VERSION "" LANGUAGES CXX)
+-
+-include(ExternalProject)
+-ExternalProject_Add(googletest
+-  DOWNLOAD_NAME googletest-${GTEST_VERSION}.tar.gz
+-  URL https://github.com/google/googletest/archive/release-${GTEST_VERSION}.tar.gz
+-  URL_HASH SHA256=${GTEST_ARCHIVE_HASH}
+-  SOURCE_DIR ${GTEST_SOURCE_DIR}
+-  BINARY_DIR ${GTEST_BINARY_DIR}
+-  DOWNLOAD_DIR ${THIRDPARTY_SOURCES_DIR}
+-  CONFIGURE_COMMAND ""
+-  BUILD_COMMAND ""
+-  INSTALL_COMMAND ""
+-  TEST_COMMAND ""
+-)
+diff --git a/cmake/SetupGoogleTest.cmake b/cmake/SetupGoogleTest.cmake
+deleted file mode 100644
+index 93442a6..0000000
+--- a/cmake/SetupGoogleTest.cmake
++++ /dev/null
+@@ -1,31 +0,0 @@
+-configure_file(${CMAKE_CURRENT_LIST_DIR}/GoogleTest-CMakeLists.txt.in
+-               ${CMAKE_BINARY_DIR}/googletest-download/CMakeLists.txt)
+-execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
+-  RESULT_VARIABLE result
+-  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download
+-)
+-if(result)
+-  message(FATAL_ERROR "Running CMake for Google Test failed: ${result}")
+-endif()
+-
+-execute_process(COMMAND ${CMAKE_COMMAND} --build .
+-  RESULT_VARIABLE result
+-  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/googletest-download
+-)
+-if(result)
+-  message(FATAL_ERROR "Downloading Google Test failed: ${result}")
+-endif()
+-
+-# Prevent overriding the parent project's compiler/linker
+-# settings on Windows
+-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-
+-add_subdirectory(${GTEST_SOURCE_DIR}/googlemock ${GTEST_BINARY_DIR} EXCLUDE_FROM_ALL)
+-mark_as_advanced(FORCE
+-                 BUILD_SHARED_LIBS
+-                 gmock_build_tests
+-                 gtest_build_samples
+-                 gtest_build_tests
+-                 gtest_disable_pthreads
+-                 gtest_force_shared_crt
+-                 gtest_hide_internal_symbols)
+diff --git a/examples/CMakeLists.txt b/examples/CMakeLists.txt
+index 5e281f8..b378390 100644
+--- a/examples/CMakeLists.txt
++++ b/examples/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.4)
++cmake_minimum_required(VERSION 3.20)
+ 
+ project(libfranka-examples CXX)
+ 
+@@ -20,7 +20,7 @@ add_library(examples_common STATIC
+   examples_common.cpp
+ )
+ 
+-target_link_libraries(examples_common PUBLIC Franka::Franka Eigen3::Eigen3)
++target_link_libraries(examples_common PUBLIC Franka::Franka Eigen3::Eigen)
+ 
+ set(EXAMPLES
+   cartesian_impedance_control
+@@ -43,7 +43,7 @@ set(EXAMPLES
+ 
+ foreach(example ${EXAMPLES})
+   add_executable(${example} ${example}.cpp)
+-  target_link_libraries(${example} Franka::Franka examples_common Eigen3::Eigen3)
++  target_link_libraries(${example} Franka::Franka examples_common Eigen3::Eigen)
+ endforeach()
+ 
+ target_link_libraries(joint_impedance_control Threads::Threads)
+diff --git a/test/CMakeLists.txt b/test/CMakeLists.txt
+index 664b2f6..03fe45f 100644
+--- a/test/CMakeLists.txt
++++ b/test/CMakeLists.txt
+@@ -1,24 +1,29 @@
+ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+ 
+ ## Google Test
+-set(GTEST_SOURCE_DIR ${THIRDPARTY_SOURCES_DIR}/googletest)
+-set(GTEST_BINARY_DIR ${CMAKE_BINARY_DIR}/googletest)
+-set(GTEST_VERSION 1.8.0)
+-set(GTEST_ARCHIVE_HASH 58a6f4277ca2bc8565222b3bbd58a177609e9c488e8a72649359ba51450db7d8)
+-set(GTEST_LIBRARIES gtest gmock gmock_main)
++#set(GTEST_SOURCE_DIR ${THIRDPARTY_SOURCES_DIR}/googletest)
++#set(GTEST_BINARY_DIR ${CMAKE_BINARY_DIR}/googletest)
++#set(GTEST_VERSION 1.8.0)
++#set(GTEST_ARCHIVE_HASH 58a6f4277ca2bc8565222b3bbd58a177609e9c488e8a72649359ba51450db7d8)
++#set(GTEST_LIBRARIES gtest gmock gmock_main)
+ 
+-include(SetupGoogleTest)
++#include(SetupGoogleTest)
++enable_testing()
+ 
+-foreach(lib ${GTEST_LIBRARIES})
+-  target_compile_options(${lib} PUBLIC -Wno-deprecated-copy)
+-endforeach()
++find_package(GTest CONFIG REQUIRED)
++#set(GTEST_LIBRARIES GTest::gtest GTest::gmock GTest::gmock_main)
++
++#foreach(lib ${GTEST_LIBRARIES})
++#  target_compile_options(${lib} PUBLIC -Wno-deprecated-copy)
++#endforeach()
+ 
+ set(TEST_OUTPUT_DIR ${PROJECT_BINARY_DIR}/test_results)
+ set(TEST_DEPENDENCIES
+-  ${GTEST_LIBRARIES}
++  GTest::gtest GTest::gmock GTest::gmock_main
++  #${GTEST_LIBRARIES}
+   Poco::Foundation
+   Poco::Net
+-  Eigen3::Eigen3
++  Eigen3::Eigen
+   Threads::Threads
+   franka
+   libfranka-common
+diff --git a/test/mock_server.cpp b/test/mock_server.cpp
+index fbded3f..52ed2b2 100644
+--- a/test/mock_server.cpp
++++ b/test/mock_server.cpp
+@@ -124,7 +124,7 @@ void MockServer<C>::serverThread() {
+                            : typename C::Connect::Response(C::Connect::Status::kSuccess);
+       });
+ 
+-  Poco::Net::DatagramSocket udp_socket({kHostname, 0});
++  Poco::Net::DatagramSocket udp_socket(Poco::Net::SocketAddress(kHostname, 0), false);
+   udp_socket.setBlocking(true);
+   Socket udp_socket_wrapper;
+   udp_socket_wrapper.sendBytes = [&](const void* data, size_t size) {

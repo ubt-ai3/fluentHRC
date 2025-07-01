@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package generated;
+
+option optimize_for = LITE_RUNTIME;
+option cc_enable_arenas = true;
+
+import "vertex.proto";
+import "meta_data.proto";
+
+enum hand_index {
+  LEFT = 0;
+  RIGHT = 1;
+}
+
+enum tracking_status {
+  NOT_TRACKED = 0;
+  INERTIAL_ONLY = 1;
+  TRACKED = 2;
+}
+
+enum hand_key_point
+{
+  PALM = 0;
+  WRIST = 1;
+  THUMB_METACARPAL = 2;
+  THUMB_PROXIMAL = 3;
+  THUMB_DISTAL = 4;
+  THUMB_TIP = 5;
+  INDEX_METACARPAL = 6;
+  INDEX_PROXIMAL = 7;
+  INDEX_INTERMEDIATE = 8;
+  INDEX_DISTAL = 9;
+  INDEX_TIP = 10;
+  MIDDLE_METACARPAL = 11;
+  MIDDLE_PROXIMAL = 12;
+  MIDDLE_INTERMEDIATE = 13;
+  MIDDLE_DISTAL = 14;
+  MIDDLE_TIP = 15;
+  RING_METACARPAL = 16;
+  RING_PROXIMAL = 17;
+  RING_INTERMEDIATE = 18;
+  RING_DISTAL = 19;
+  RING_TIP = 20;
+  LITTLE_METACARPAL = 21;
+  LITTLE_PROXIMAL = 22;
+  LITTLE_INTERMEDIATE = 23;
+  LITTLE_DISTAL = 24;
+  LITTLE_TIP = 25;
+} 
+
+message Hand_Data {
+  bool valid = 1; 
+  hand_index hand = 2; 
+  tracking_status tracking_stat = 3;
+  vertex_3d grip_position = 4;
+  quaternion grip_rotation = 5;
+  vertex_3d aim_position = 6;
+  quaternion aim_rotation = 7;
+  repeated vertex_3d hand_key_positions = 8;
+  repeated quaternion hand_key_rotations = 9;
+  repeated float hand_key_radii = 10;
+  bool is_grasped = 11;
+  int64 utc_timestamp = 12;
+}
+
+message Hand_Data_Meta {
+	Hand_Data hand_data = 1;
+	optional Transformation_Meta transformation_meta = 2;
+}
+
+service hand_tracking_com {
+  rpc transmit_hand_data (stream Hand_Data_Meta) returns (google.protobuf.Empty) {}
+}

@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "vertex.proto";
+import "meta_data.proto";
+
+package generated;
+
+option optimize_for = LITE_RUNTIME;
+option cc_enable_arenas = true;
+
+message Pcl_Data {
+	repeated vertex_3d vertices = 1;
+	int64 timestamp = 2;
+}
+
+message Draco_Data {
+	bytes data = 1;
+	int64 timestamp = 2;
+}
+
+message Pcl_Data_Meta {
+	Pcl_Data pcl_data = 1;
+	optional Transformation_Meta transformation_meta = 2;
+}
+
+message ICP_Result {
+	optional Matrix_TF_Meta data = 1;
+}
+
+service pcl_com {
+
+  //sends point clouds and receives possible correspondence
+  rpc transmit_pcl_data (stream Pcl_Data_Meta) returns (ICP_Result) {}
+  rpc transmit_draco_data (stream Draco_Data) returns (ICP_Result) {}
+  rpc transmit_obb (Obb_Meta) returns (google.protobuf.Empty) {}
+}

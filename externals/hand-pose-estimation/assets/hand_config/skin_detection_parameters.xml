@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="20">
+<skin_detection_params class_id="0" tracking_level="0" version="0">
+	<parameter_set class_id="1" tracking_level="0" version="0"></parameter_set>
+	<hsv_lower_bound>
+		<count>3</count>
+		<item_version>0</item_version>
+		<item>0</item>
+		<item>23</item>
+		<item>80</item>
+	</hsv_lower_bound>
+	<hsv_upper_bound>
+		<count>3</count>
+		<item_version>0</item_version>
+		<item>20</item>
+		<item>255</item>
+		<item>255</item>
+	</hsv_upper_bound>
+	<threshold>10</threshold>
+	<min_hand_dimension_pixel>20</min_hand_dimension_pixel>
+	<min_hand_area_fraction>1.399999950e-03</min_hand_area_fraction>
+	<smoothing_factor_pixel>2.000000000e+00</smoothing_factor_pixel>
+</skin_detection_params>
+</boost_serialization>
+

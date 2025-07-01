@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "vertex.proto";
+import "meta_data.proto";
+
+package generated;
+
+option optimize_for = LITE_RUNTIME;
+option cc_enable_arenas = true;
+
+enum Visual_Change
+{
+    ENABLED = 0;
+    DISABLED = 1;
+    REVOKED = 2;
+}
+
+message Joints {
+	float theta_1 = 1;
+	float theta_2 = 2;
+	float theta_3 = 3;
+    float theta_4 = 4;
+    float theta_5 = 5;
+    float theta_6 = 6;
+    float theta_7 = 7;
+}
+
+message Voxels {
+	Matrix robot_origin = 1;
+	float voxel_side_length = 2;
+	repeated index_3d voxel_indices = 3;
+}
+
+message Tcps {
+	repeated vertex_3d points = 1;
+}
+
+message Voxel_TF_Meta {
+    Voxels voxels = 1;
+	optional Transformation_Meta transformation_meta = 2;
+}
+
+message Voxel_Transmission {
+    oneof sth {
+	    Voxel_TF_Meta voxels_data = 1;
+        Visual_Change state_update = 2;
+    }
+}
+
+message Tcps_TF_Meta {
+    Tcps tcps = 1;
+    optional Transformation_Meta transformation_meta = 2;
+}
+
+message Tcps_Transmission {
+    oneof sth {
+        Tcps_TF_Meta tcps_data = 1;
+        Visual_Change state_update = 2;
+    }
+}
+
+message Sync_Joints {
+    Joints joints = 1;
+    double utc_timepoint = 2;
+}
+
+message Sync_Joints_Array {
+    repeated Sync_Joints sync_joints = 1;
+}
+
+message Sync_Joints_Transmission {
+    oneof sth {
+        Sync_Joints_Array sync_joints_data = 1;
+        Visual_Change state_update = 2;
+    }
+}
+
+service robot_com {
+    rpc transmit_joints (google.protobuf.Empty) returns (stream Joints) {}
+    rpc transmit_sync_joints (google.protobuf.Empty) returns (stream Sync_Joints_Transmission) {}
+    rpc transmit_voxels (google.protobuf.Empty) returns (stream Voxel_Transmission) {}
+    rpc transmit_tcps (google.protobuf.Empty) returns (stream Tcps_Transmission) {}  
+}

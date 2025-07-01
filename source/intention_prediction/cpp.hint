@@ -1,0 +1,2 @@
+#define INTENTIONPREDICTION_API __declspec(dllexport)
+#define INTENTIONPREDICTION_API __declspec(dllimport)

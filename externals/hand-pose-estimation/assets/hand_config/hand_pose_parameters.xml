@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="20">
+<hand_pose_params class_id="0" tracking_level="0" version="0">
+	<parameter_set class_id="1" tracking_level="0" version="0"></parameter_set>
+	<keypoint_probability_threshold>9.000000358e-02</keypoint_probability_threshold>
+	<hand_probability_threshold>2.000000030e-01</hand_probability_threshold>
+	<hand_min_keypoints>5</hand_min_keypoints>
+	<hand_min_dimension>5.000000075e-02</hand_min_dimension>
+	<palm_length>7.500000298e-02</palm_length>
+	<bone_lengths>
+		<count>20</count>
+		<item_version>0</item_version>
+		<item>5.088250041e-01</item>
+		<item>3.614380062e-01</item>
+		<item>3.132700026e-01</item>
+		<item>2.946459949e-01</item>
+		<item>1.060240030e+00</item>
+		<item>4.434649944e-01</item>
+		<item>2.974640131e-01</item>
+		<item>2.605440021e-01</item>
+		<item>1.013980031e+00</item>
+		<item>5.563759804e-01</item>
+		<item>3.765749931e-01</item>
+		<item>3.121489882e-01</item>
+		<item>9.984089732e-01</item>
+		<item>5.016250014e-01</item>
+		<item>3.106890023e-01</item>
+		<item>2.405640036e-01</item>
+		<item>9.599390030e-01</item>
+		<item>3.205989897e-01</item>
+		<item>2.279369980e-01</item>
+		<item>2.368250042e-01</item>
+	</bone_lengths>
+	<roi_box_padding>7.999999821e-02</roi_box_padding>
+</hand_pose_params>
+</boost_serialization>
+

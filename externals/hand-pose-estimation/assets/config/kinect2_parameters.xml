@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="18">
+<kinect2_params class_id="0" tracking_level="0" version="0">
+	<parameter_set class_id="1" tracking_level="0" version="0"></parameter_set>
+	<focal_length_x>3.657271118e+02</focal_length_x>
+	<focal_length_y>3.657271118e+02</focal_length_y>
+	<principal_point class_id="2" tracking_level="0" version="0">
+		<rows>2</rows>
+		<cols>1</cols>
+		<val>2.594580994e+02</val>
+		<val>2.073076935e+02</val>
+	</principal_point>
+	<radial_distortion_second_order>9.080834687e-02</radial_distortion_second_order>
+	<radial_distortion_second_order>9.080834687e-02</radial_distortion_second_order>
+	<radial_distortion_fourth_order>-2.711716890e-01</radial_distortion_fourth_order>
+	<radial_distortion_sixth_order>9.572690725e-02</radial_distortion_sixth_order>
+	<rgb_projection class_id="3" tracking_level="0" version="0">
+		<rows>3</rows>
+		<cols>4</cols>
+		<val>5.700137615e-01</val>
+		<val>4.704782041e-04</val>
+		<val>-5.144004822e-01</val>
+		<val>3.038194403e-02</val>
+		<val>-1.217646874e-03</val>
+		<val>5.720775127e-01</val>
+		<val>-2.868426740e-01</val>
+		<val>7.552812167e-05</val>
+		<val>-1.399189387e-06</val>
+		<val>5.216977570e-07</val>
+		<val>-5.376706249e-04</val>
+		<val>1.284821707e-07</val>
+	</rgb_projection>
+	<depth_projection>
+		<rows>3</rows>
+		<cols>4</cols>
+		<val>6.009007096e-01</val>
+		<val>3.799619153e-04</val>
+		<val>-4.092112780e-01</val>
+		<val>-4.863188587e-05</val>
+		<val>3.842323204e-04</val>
+		<val>5.980644822e-01</val>
+		<val>-3.373134732e-01</val>
+		<val>1.782794970e-05</val>
+		<val>1.923152922e-06</val>
+		<val>1.588145551e-06</val>
+		<val>-1.626957906e-03</val>
+		<val>8.239515381e-08</val>
+	</depth_projection>
+</kinect2_params>
+</boost_serialization>
+

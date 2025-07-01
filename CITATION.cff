@@ -1,0 +1,23 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Fluency in Dynamic Human-Robot Teaming with Intention
+  Prediction - Main Application
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Nico
+    family-names: Höllerich
+    email: nico.hoellerich@uni-bayreuth.de
+    affiliation: University of Bayreuth
+    orcid: 'https://orcid.org/0000-0003-2612-483X'
+abstract: "The market share of collaborative robots in the industry continues to grow steadily. However, there is still a need to improve human-robot collaboration further to support the ongoing industrial transformation, enabling robots to take on more tasks and function as true teammates. This requires advancements in both perception and decision-making capabilities. This thesis contributes to two key aspects of achieving seamless human-robot collaboration: perceiving task progress and recognising human intentions, all within a framework of flexible and fluent cooperation.\n\t\nThe starting point involves two empirical studies on human-human teaming to identify communication mechanisms and intention prediction capabilities for assembly tasks. The findings have resulted in the development of a research demonstrator for a cooperative assembly station, with a particular emphasis on the flexible allocation of task steps and the integration of intention prediction.\n\t\nThe prototype hardware includes a robot arm, an assembly station, and a depth camera. Core innovations are the task-state tracking algorithm and the intention prediction component. The task-state tracking algorithm is based on object detection and occlusion data from the camera. It models task execution in terms of the markings of a Petri net. The provided Petri net encodes all possible ways to execute the task in a space-efficient manner. Comprehensive evaluations demonstrate the algorithm’s robustness and efficiency in non-deterministic task executions.\n\t\nThe sequence of task steps executed by the human serves as input to the intention prediction module, which predicts the next steps using a neural network with a custom-designed feature space. This feature space encodes spatial information to enable efficient, real-time training for each user interacting with the robot. A comprehensive evaluation compares the accuracy of the module with traditional action prediction approaches using data from user interactions with the system.\n\t\nFinally, this thesis presents a comprehensive study on the system. Based on intention prediction, different robot behaviours are implemented and evaluated by a user study in terms of fluency and productivity questionnaires. Post-hoc analysis provides insights into the interrelationships and effects of robot behaviour on these measures.\n\t\nIn summary, this thesis contributes technical foundations, empirical evaluations, and motivates further investigations into fluent and flexible human-robot teaming with intention prediction."
+license: MIT
+version: 1.0.0
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.15739208

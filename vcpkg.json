@@ -1,0 +1,37 @@
+{
+"name": "flexcobot",
+  "version": "0.3.2",
+  "dependencies": [
+    "opencv",
+    "boost-date-time",
+    "boost-serialization",
+    "boost-signals2",
+    "eigen3",
+    {
+        "name": "pcl",
+        "features": [
+            "simulation",
+            "vtk"        
+        ]
+    },
+    "kinectsdk2",
+    "realsense2",
+    {
+        "name": "caffe",
+        "features": [
+            "cuda", "opencv", "hdf5"
+        ]
+    },
+    "enact",
+    "boost-algorithm",
+    "boost-timer",
+    "freeglut",
+    "grpc",
+    "tinyobjloader",
+    "tinyxml",
+    "franka-proxy",
+    "base-transformation",
+    "gpu-voxels",
+    "python3"
+  ]
+}

@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package generated;
+
+option optimize_for = LITE_RUNTIME;
+option cc_enable_arenas = true;
+
+import "vertex.proto";
+import "meta_data.proto";
+
+message Colored_Box {
+	Obb obbox = 1;
+	color box_color = 2;
+}
+
+message Object_Data {
+	string prototype_name = 1;
+	Matrix transform = 2;
+}
+
+message Object_Instance {
+	string id = 1;	
+	oneof data {
+		Object_Data obj = 2;
+		Colored_Box box = 3;
+	}
+}
+
+message Delete_Request {
+	string id = 1;
+}
+
+message Object_Instance_TF_Meta {
+    Object_Instance object_instance = 1;
+	optional Transformation_Meta transformation_meta = 2;
+}
+
+service object_com {
+  rpc sync_objects (google.protobuf.Empty) returns (stream Object_Instance_TF_Meta) {}
+  rpc transmit_object (google.protobuf.Empty) returns (stream Object_Instance_TF_Meta) {}
+  rpc delete_object (google.protobuf.Empty) returns (stream Delete_Request) {}
+}

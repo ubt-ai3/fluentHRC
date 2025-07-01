@@ -1,0 +1,20 @@
+{
+  "name": "base-transformation",
+  "version": "1.0.3",
+  "port-version": 1,
+  "description": "Utility to convert between different coordinate frames",
+  "homepage": "https://github.com/Olli1080/CoordTrafoUtil",
+  "license": null,
+  "dependencies": [
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    },
+    "eigen3",
+    "pcl"
+  ]
+}

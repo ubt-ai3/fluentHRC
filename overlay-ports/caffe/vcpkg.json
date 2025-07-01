@@ -1,0 +1,77 @@
+{
+  "name": "caffe",
+  "version-string": "1.0.7",
+  "description": "Caffe: a fast open framework for deep learning.",
+  "dependencies": [
+    {
+      "name": "vcpkg-cmake",
+      "host": true
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "host": true
+    },
+    "gflags",
+    "glog",
+    "protobuf"
+  ],
+  "features": {
+    "cuda": {
+      "description": "Build caffe with CUDA support",
+      "dependencies": [
+        "cuda",
+        "cudnn"
+      ]
+    },
+    "leveldb": {
+      "description": "Build caffe with LevelDB support",
+      "dependencies": [
+        "leveldb"
+      ]
+    },
+    "lmdb": {
+      "description": "Build caffe with LMDB support",
+      "dependencies": [
+        "lmdb"
+      ]
+    },
+    "mkl": {
+      "description": "Build caffe using BLAS as mkl backend",
+      "dependencies": [
+        "intel-mkl"
+      ]
+    },
+    "opencv": {
+      "description": "Build caffe with opencv",
+      "dependencies": [
+        "opencv"
+      ]
+    },
+    "python": {
+      "description": "Build caffe with python",
+      "dependencies": [
+        "boost-python"
+      ]
+    },
+    "hdf5": {
+      "description": "Build caffe with HDF5 support",
+      "dependencies": [
+        {
+          "name": "hdf5",
+          "features": [
+            "cpp"
+          ]
+        }
+      ]
+    },
+    "openblas": {
+      "description": "Build caffe using BLAS as openblas backend",
+      "dependencies": [
+        "openblas"
+      ]
+    }
+  },
+  "default-features": [
+    "openblas"
+  ]
+}
