@@ -2,9 +2,9 @@ vcpkg_check_linkage(ONLY_STATIC_LIBRARY)
 
 vcpkg_from_git(
     OUT_SOURCE_PATH SOURCE_PATH
-    URL https://resy-gitlab.inf.uni-bayreuth.de/enact/enact
-    REF 21e5a0e9f7b30c074b787382223b2c3a5840ddfa
-    HEAD_REF building_agent
+    URL https://github.com/ubt-ai3/enact
+    REF 1f9913d32daf921122afc3e02d620a4e5f31ca3d
+    HEAD_REF main
 )
 
 vcpkg_cmake_configure(

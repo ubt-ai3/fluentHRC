@@ -1,11 +1,12 @@
+[![DOI](https://zenodo.org/badge/1011842209.svg)](https://doi.org/10.5281/zenodo.15783113) 
+
 Fluency in Dynamic Human-Robot Teaming with Intention Prediction - Main Application
 ===================================================================================
 
 [![Video Preview](https://raw.githubusercontent.com/NiHoel/fluentHRC/main/WISEL_promo.webp)](https://resy-server.inf.uni-bayreuth.de/resypub/files/hllerich2024a.Fluency.in.Dynamic.HumanRobot.Teaming.with.Intention.Prediction.mp4)
 
 # TODO
-* Integrate ENACT, referenced in line 5 of overlay-ports\enact\portfile.cmake 
-* Update link to Franka Proxy in line 45 of overlay-ports\franka-proxy\portfile.cmake
+* Update link to Franka Proxy in line 45 of overlay-ports\franka-proxy\portfile.cmake and in the README
 
 # Getting Started
 1. Clone Repository to a short path (< 30 characters including repository folder): `git clone https://resy-gitlab.inf.uni-bayreuth.de/flexcobot/core.git`.
