@@ -32,18 +32,11 @@
 # # Specifies if the port install should fail immediately given a condition
 # vcpkg_fail_port_install(MESSAGE "libfranka currently only supports Linux and Mac platforms" ON_TARGET "Windows")
 
-#vcpkg_from_gitlab(
-#    GITLAB_URL https://resy-gitlab.inf.uni-bayreuth.de
-#    OUT_SOURCE_PATH SOURCE_PATH
-#    REPO libfranka/franka_proxy
-#    REF 8f563f9e7b06ddd8ee71837c204c07927f182b1d
-#    SHA512 59eea1acbbe9ddfa8b5f611410fb8018d39fcb15959554e7e7985fb0a673f54d2dade7e054320bfe02e167cb11d0db9252e2e94304830273db13c6925cd41240
-#)
-
 vcpkg_from_git(
-    OUT_SOURCE_PATH SOURCE_PATH
-    URL https://resy-gitlab.inf.uni-bayreuth.de/libfranka/franka_proxy
-    REF 543a3059e59e65f6519d7aedffff892e4a0d48fb
+	OUT_SOURCE_PATH SOURCE_PATH
+	URL https://github.com/ubt-ai3/franka-proxy.git
+	REF 91707f5103ce1d83aea5039b419b3df8a0d24fa2
+	HEAD_REF main
 )
 
 vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
