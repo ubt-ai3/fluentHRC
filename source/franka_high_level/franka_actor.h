@@ -14,7 +14,7 @@ class remote_controller_wrapper : public state_observation::Controller
 public:
 
 	explicit remote_controller_wrapper(std::chrono::high_resolution_clock::time_point start_time = std::chrono::high_resolution_clock::now(),
-		std::string_view ip_addr = "132.180.194.120");
+		std::string_view ip_addr = "132.180.194.123");
 
 	~remote_controller_wrapper() override = default;
 

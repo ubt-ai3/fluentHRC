@@ -20,8 +20,16 @@ Fluency in Dynamic Human-Robot Teaming with Intention Prediction - Main Applicat
 7. Unzip into the installation directory of CUDA (%CUDA_PATH%), overwrite existing files if asked.
 8. Open Visual Studio (CMake Cache generation should trigger. Otherwise right click on "CMakeLists.txt" in Solution Explorer and select "Generate Cache")
 9. Wait for cmake to finish (may take some time)
-10. Download the CNN models for hand tracking [here](https://handtracker.mpi-inf.mpg.de/projects/GANeratedHands/) and copy `merged_net.prototxt` and `merged_snapshot_iter_300000.caffemodel` from `GanHandsAPI.zip/data/CNNClassifier/rgb-crop_232_FINAL_synth+GAN_ProjLayer` to `externals/hand-pose-estimation/assets/network_models`
-11. Open solution file in build/default, compile the program and run it.
+10. Download the CNN models for hand tracking [here](https://handtracker.mpi-inf.mpg.de/projects/GANeratedHands/) and copy `merged_net.prototxt` and `merged_snapshot_iter_300000.caffemodel` from `GanHandsAPI.zip/data/CNNClassifier/rgb-crop_232_FINAL_synth+GAN_ProjLayer` to `externals/hand-pose-estimation/assets/network_models`.
+11. Open solution file in build/default, compile the program 
+12. If you want to use a Franka robot:
+    1. install and run [franka-proxy](https://github.com/ubt-ai3/franka-proxy) on the computer directly connected to the robot. Do not run both programs on the same computer. This leads to stuttering motion of the Franka robot.
+    2. Ensure that both computers allow netowrk connections for the respective programs. Add additional rules to the firewall, if needed.
+    3. Set the IP address in line 17 of `source/franka_high_level/franka_actor.h` to the IP address of the computer running `franka_proxy`:
+      ```
+      	explicit remote_controller_wrapper(std::chrono::high_resolution_clock::time_point start_time = std::chrono::high_resolution_clock::now(),
+		std::string_view ip_addr = "132.180.194.120");```
+13. Run the program.
 
 # Related Resources
 * (Video)[https://resy-server.inf.uni-bayreuth.de/resypub/files/hllerich2024a.Fluency.in.Dynamic.HumanRobot.Teaming.with.Intention.Prediction.mp4]
@@ -42,9 +50,136 @@ When using this code or related resources please mention the following paper in 
 }
 ```
 For the hardware setup, see Appendix B.1 in the dissertation. To calibrate Kinect 2 and the robot:
-1. Prepare the mat (`assets\mat2.pdf`) and objects.
+1. Prepare the mat (`assets\mat2.pdf`) and objects (print the mat on a non-reflective material).
 2. run `app_visualization` and press `l`.
 3. Repeatedly press the suction cup onto the highlighted blocks and press `l` (see at the end of `source/app_visualization/module_manager.cpp`).
+
+# Configuration Options
+
+FlexCobot uses compile-time switches to configure different operational modes. These switches are defined in `source/app_visualization/module_manager.hpp`:
+
+## Compile-Time Switches
+
+### Camera Type Configuration
+The system supports three camera modes configured via the `camera_type` enum in `module_manager.hpp:93-98`:
+
+```cpp
+enum class camera_type {
+    SIMULATION,  // Virtual camera for simulation
+    KINECT_V2,   // Microsoft Kinect v2 sensor  
+    REALSENSE    // Intel RealSense camera
+};
+```
+
+The camera type is set in `module_manager.cpp:1214`:
+```cpp
+module_manager manager(argc, argv, camera_type::KINECT_V2);
+```
+
+**To configure camera mode:**
+1. Edit `source/app_visualization/module_manager.cpp:1214`
+2. Change `camera_type::KINECT_V2` to:
+   - `camera_type::SIMULATION` for simulation mode
+   - `camera_type::REALSENSE` for RealSense camera
+   - `camera_type::KINECT_V2` for Kinect v2 (default)
+
+### Hardware Integration Switches
+Two main preprocessor directives control hardware integration (`module_manager.hpp:9-10`):
+
+#### `USE_HOLOLENS` (Default: Enabled)
+Controls HoloLens AR integration and gRPC server functionality.
+
+**When enabled:**
+- Includes gRPC server modules (`grpc_server/server_module.h`)
+- Enables HoloLens hand tracking integration
+- Activates presenter module for AR visualization
+- Supports mesh selection and transmission to HoloLens
+
+**When disabled:**
+- Removes all HoloLens-related code
+- Disables gRPC server functionality
+- No AR visualization capabilities
+
+#### `USE_ROBOT` (Default: Enabled)  
+Controls Franka robot integration and planning.
+
+**When enabled:**
+- Includes robot planning and control modules
+- Enables Franka robot communication
+- Activates motion planning algorithms
+- Supports both real robot and simulation modes
+
+**When disabled:**
+- Removes all robot control code
+- No motion planning or execution
+- Purely observational/tracking mode
+
+### Debug Configuration
+```cpp
+//#define DEBUG        // Line 8: Commented out by default
+#define DEBUG        // Line 42 in module_manager.cpp: Enabled
+```
+
+**To modify these switches:**
+
+1. **Disable HoloLens integration:**
+   ```cpp
+   //#define USE_HOLOLENS  // Comment out line 9
+   ```
+
+2. **Disable robot integration:**  
+   ```cpp
+   //#define USE_ROBOT     // Comment out line 10
+   ```
+
+3. **Enable global debug mode:**
+   ```cpp
+   #define DEBUG         // Uncomment line 8
+   ```
+
+### Agent Count Configuration
+The number of agents is automatically configured based on enabled features (`module_manager.cpp:84-89`):
+
+```cpp
+int count_agents =
+#ifdef USE_ROBOT
+    3; // robot + 2 hands
+#else
+    2; // hands only
+#endif
+```
+
+### Common Configurations
+
+#### Simulation Only (No Hardware)
+```cpp
+//#define USE_HOLOLENS  // Disabled
+//#define USE_ROBOT     // Disabled
+```
+Set camera to `camera_type::SIMULATION`
+
+#### HoloLens + Simulation (No Physical Robot)
+```cpp
+#define USE_HOLOLENS   // Enabled
+//#define USE_ROBOT     // Disabled  
+```
+Set camera to `camera_type::SIMULATION`
+
+#### Full Hardware Setup
+```cpp
+#define USE_HOLOLENS   // Enabled
+#define USE_ROBOT      // Enabled
+```
+Set camera to `camera_type::KINECT_V2`
+
+#### Kinect Only (No AR or Robot)
+```cpp
+//#define USE_HOLOLENS  // Disabled
+//#define USE_ROBOT     // Disabled
+```
+Set camera to `camera_type::KINECT_V2`
+
+**Note:** After modifying these switches, you must rebuild the entire project for changes to take effect.
 
 # Code Structure Overview
 
