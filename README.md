@@ -1,9 +1,9 @@
-[![DOI](https://zenodo.org/badge/1011842209.svg)](https://doi.org/10.5281/zenodo.15783113) 
+[![DOI](https://zenodo.org/badge/15783113.svg)](https://doi.org/10.5281/zenodo.15783113) 
 
 Fluency in Dynamic Human-Robot Teaming with Intention Prediction - Main Application
 ===================================================================================
 
-[![Video Preview](https://raw.githubusercontent.com/ubt-ai3/fluentHRC/main/WISEL_promo.webp)](https://resy-server.inf.uni-bayreuth.de/resypub/files/hllerich2024a.Fluency.in.Dynamic.HumanRobot.Teaming.with.Intention.Prediction.mp4)
+[![Video Preview](https://raw.githubusercontent.com/ubt-ai3/fluentHRC/main/WISEL_promo.webp)](https://www.youtube.com/watch?v=DUig5m9wJDs)
 
 # Getting Started
 1. Clone Repository to a short path (< 30 characters including repository folder): `git clone https://resy-gitlab.inf.uni-bayreuth.de/flexcobot/core.git`.
@@ -29,8 +29,8 @@ Fluency in Dynamic Human-Robot Teaming with Intention Prediction - Main Applicat
 13. Run the program.
 
 # Related Resources
-* [Video](https://resy-server.inf.uni-bayreuth.de/resypub/files/hllerich2024a.Fluency.in.Dynamic.HumanRobot.Teaming.with.Intention.Prediction.mp4)
-* [HoloLens Application](https://github.com/Olli1080/ar_integration/tree/5.4.3)
+* [Video](https://www.youtube.com/watch?v=DUig5m9wJDs)
+* [HoloLens Application](https://github.com/Olli1080/ar_integration/tree/fluentHRC_1.0.0)
 * [Franka Proxy](https://github.com/ubt-ai3/franka-proxy)
 * [Data and Plots](https://codeocean.com/capsule/2820731/tree)
 * [Dissertation](https://epub.uni-bayreuth.de/id/eprint/8512/1/thesis_final_2025-07-04_Nico_Hoellerich_Fluency_in_Human-Robot_Teaming_with_Intention_Prediction.pdf)
